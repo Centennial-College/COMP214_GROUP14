@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace COMP214_GROUP14.Account
+namespace COMP214_GROUP14
 {
 
 
-    public partial class Lockout
+    public partial class Instructor
     {
     }
 }

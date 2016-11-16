@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace COMP214_GROUP14.Account
+namespace COMP214_GROUP14
 {
-    public partial class Lockout : System.Web.UI.Page
+    public partial class Course : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

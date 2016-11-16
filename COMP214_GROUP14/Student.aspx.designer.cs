@@ -11,7 +11,7 @@ namespace COMP214_GROUP14
 {
 
 
-    public partial class Contact
+    public partial class Student
     {
     }
 }

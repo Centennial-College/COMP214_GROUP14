@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace COMP214_GROUP14
 {
-    public partial class Contact : Page
+    public partial class Student : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

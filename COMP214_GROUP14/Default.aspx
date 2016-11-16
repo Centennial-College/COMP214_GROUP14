@@ -2,41 +2,63 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="jumbotron small">
+        <h1>Small College</h1>
+        <div class="container small">
+            This is a small college management system developed by ASP.NET and Oracle.<br />
+ <%--             This project involves six tables
+           <dl>
+                <dd>- Courses</dd>
+                <dd>- CourseInstructor</dd>
+                <dd>- Department</dd>
+                <dd>- Enrollement</dd>
+                <dd>- OfficeAssignment</dd>
+                <dd>- Person</dd>
+            </dl>--%>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
+        <div class="col-md-6">
+            <h2>Project Guidelines</h2>
+            <div class="well">
+                <strong>Course Name:</strong> Advance Database Concepts<br />
+                <strong>Course Code:</strong> COMP214<br />
+                <strong>Term: </strong>Fall 2016<br />
+                You will work in groups of maximum 4 people. Tasks will include: 
+                <ul>
+                    <li>Interface Design 
+                    </li>
+                    <li>application logic and programming
+                    </li>
+                    <li>database design and implementation, data creation
+                    </li>
+                </ul>
+                <div class="pull-right"><a href="documents/guide.doc" class="btn btn-primary btn-md">Get Guidelines &raquo;</a></div>
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
+        <div class="col-md-6">
+            <h2>Team Members</h2>
+            <div class="well">
+                <ul>
+                    <li>Luke Lu – Team Leader, .Net Web Developer 
+                    </li>
+                    <li>Kevin Ma – PL/SQL
+                    </li>
+                    <li>Kareem Marzouk – PL/SQL
+                    </li>
+                    <li>Bhavin Master – PL/SQL
+                    </li>
+
+                </ul>
+                <br />
+                <br />
+                <br />
+                <div class="pull-right"><a href="https://github.com/lukelu6666/COMP214_GROUP14" target="_blank" class="btn btn-primary btn-md">Get Source Code &raquo;</a></div>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+
     </div>
 
 </asp:Content>
