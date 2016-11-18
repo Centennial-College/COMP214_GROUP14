@@ -40,13 +40,16 @@
                 <div class="row form-inline">
                     <div class="col-md-3"></div>
                     <div class="col_md-9">
-                        <button id="btnAdd" class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">&nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+                        <button id="btnAdd"
+                            data-toggle="tooltip" data-placement="bottom"
+                            title="This command button will insert student record to students table." 
+                        class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">&nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                         <button id="btnCancel" type="reset" class="btn btn-default" runat="server" causesvalidation="False">&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
                     </div>
                     <br />
                 </div>
             </div>
-            <asp:ListView ID="ListView1" runat="server" DataKeyNames="STUDENT_ID" DataSourceID="SqlDataSource1"  OnItemCommand="ListView1_ItemCommand">
+            <asp:ListView ID="ListView1" runat="server" DataKeyNames="STUDENT_ID" DataSourceID="SqlDataSource1" OnItemCommand="ListView1_ItemCommand">
 
                 <EmptyDataTemplate>
                     <table runat="server">
@@ -103,5 +106,4 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;STUDENT_ID&quot;, &quot;FNAME&quot;, &quot;LNAME&quot;, &quot;COMPLETED_CREDITS&quot; FROM &quot;SC_STUDENTS&quot;"></asp:SqlDataSource>
         </div>
     </div>
-    <script src="Scripts/AlterAutoHidden.js"></script>
 </asp:Content>

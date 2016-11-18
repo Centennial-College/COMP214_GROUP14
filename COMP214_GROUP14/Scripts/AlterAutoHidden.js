@@ -6,5 +6,6 @@ $(document).ready(function () {
             $(this).remove();
         });
     }, 2000);
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

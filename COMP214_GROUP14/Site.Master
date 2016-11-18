@@ -66,7 +66,7 @@
                         <li><a runat="server" href="~/Instructor">Instructor</a></li>
                         <li><a runat="server" href="~/Department">Department</a></li>
                     </ul>
-<%--                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <%--                    <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Register">Register</a></li>
@@ -95,5 +95,7 @@
             </footer>
         </div>
     </form>
+    <script src="Scripts/AlterAutoHidden.js"></script>
+
 </body>
 </html>

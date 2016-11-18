@@ -55,7 +55,10 @@
             <div class="row form-inline">
                 <div class="col-md-3"></div>
                 <div class="col_md-9">
-                    <button id="btnAdd" class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">&nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+                    <button id="btnAdd" 
+                         data-toggle="tooltip" data-placement="bottom"
+                            title="This command button will call Create_Course_SP procedure. If department is not exist, it will create the departmet." 
+                        class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">&nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                     <button id="btnCancel" type="reset" class="btn btn-default" runat="server" causesvalidation="False">&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
                 </div>
                 <br />
@@ -92,7 +95,9 @@
                             CommandName="DeleteItem"
                             CommandArgument='<%# Eval("COURSE_ID") %>'
                             Text="Complete"
-                            OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');" />
+                            OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');"
+                            data-toggle="tooltip" data-placement="bottom"
+                            title="This command button will set the field COMPLETED='Y'. Then Triggers will add credit to the students who enrolled this course" />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -117,6 +122,5 @@
         </asp:ListView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT c.course_id course_id, c.title title, c.credits credits, d.name DeptName FROM sc_courses c inner join sc_departments d using (dept_id) where c.completed='N'"></asp:SqlDataSource>
     </div>
-    <script src="Scripts/AlterAutoHidden.js"></script>
 
 </asp:Content>

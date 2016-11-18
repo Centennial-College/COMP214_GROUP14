@@ -39,7 +39,10 @@
                                     CommandName="DeleteItem"
                                     CommandArgument='<%# Eval("INSTRUCTOR_ID") %>'
                                     Text="Delete"
-                                    OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');" />
+                                    OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');" 
+                                    data-toggle="tooltip" data-placement="bottom"
+                                    title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL course which was FK with instructor."
+                                    />
                             </td>
                         </tr>
                     </ItemTemplate>
