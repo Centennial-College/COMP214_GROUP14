@@ -187,6 +187,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\bootstrap.min.css" />
     <Content Include="App_Themes\Default\StyleSheet1.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Course.aspx" />
