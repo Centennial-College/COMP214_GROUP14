@@ -12,6 +12,8 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="Scripts/customerValidation.js"></script>
     <script type="text/javascript">
@@ -60,11 +62,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Student">Student</a></li>
-                        <li><a runat="server" href="~/Course">Course</a></li>
-                        <li><a runat="server" href="~/Instructor">Instructor</a></li>
-                        <li><a runat="server" href="~/Department">Department</a></li>
+                        <li <%=Active[0] %>><a runat="server" href="~/">Home</a></li>
+                        <li <%=Active[1] %>><a runat="server" href="~/Student"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Student</a></li>
+                        <li <%=Active[2] %>><a runat="server" href="~/Course"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Course</a></li>
+                        <li <%=Active[3] %>><a runat="server" href="~/Instructor"><span class="glyphicon glyphicon-user"></span>&nbsp;Instructor</a></li>
+                        <li <%=Active[4] %>><a runat="server" href="~/Department"><span class="glyphicon glyphicon-credit-card"></span>&nbsp;Department</a></li>
                     </ul>
                     <%--                    <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
@@ -90,10 +92,11 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer class="text-center">
-                <p>&copy; <%: DateTime.Now.Year %> - COMP214-001-GROUP14 for 2016 Full Semester</p>
-            </footer>
+
         </div>
+        <footer class="text-center">
+            <p>&copy; <%: DateTime.Now.Year %> - COMP214-001-GROUP14 for 2016 Full Semester</p>
+        </footer>
     </form>
     <script src="Scripts/AlterAutoHidden.js"></script>
 

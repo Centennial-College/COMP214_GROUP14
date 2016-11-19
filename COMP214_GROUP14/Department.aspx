@@ -31,7 +31,7 @@
                         </tr>
                     </ItemTemplate>
                     <LayoutTemplate>
-                        <table id="itemPlaceholderContainer" runat="server" class="table">
+                        <table id="itemPlaceholderContainer" runat="server" class="table  table-hover table-striped">
                             <tr runat="server">
                                 <th runat="server">DEPT_ID</th>
                                 <th runat="server">NAME</th>

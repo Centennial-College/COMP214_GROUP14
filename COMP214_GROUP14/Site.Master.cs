@@ -15,9 +15,11 @@ namespace COMP214_GROUP14
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+        public string[] Active = new string[5];
 
         protected void Page_Init(object sender, EventArgs e)
         {
+
             // The code below helps to protect against XSRF attacks
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;
@@ -69,7 +71,13 @@ namespace COMP214_GROUP14
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            const string classActive = "class=\"active\"";
+            string Url = Request.RawUrl.ToString().ToLower();
+            if (Url.IndexOf("default") > 0 || Url=="/") Active[0] = classActive;
+            if (Url.IndexOf("student") > 0) Active[1] = classActive;
+            if (Url.IndexOf("course") > 0) Active[2] = classActive;
+            if (Url.IndexOf("instructor") > 0) Active[3] = classActive;
+            if (Url.IndexOf("department") > 0) Active[4] = classActive;
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

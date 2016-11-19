@@ -40,7 +40,7 @@
                                     CommandArgument='<%# Eval("INSTRUCTOR_ID") %>'
                                     Text="Delete"
                                     OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');" 
-                                    data-toggle="tooltip" data-placement="bottom"
+                                    data-toggle="tooltip" data-placement="right"
                                     title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL course which was FK with instructor."
                                     />
                             </td>
@@ -48,7 +48,7 @@
                     </ItemTemplate>
                     <LayoutTemplate>
 
-                        <table id="itemPlaceholderContainer" runat="server" class="table">
+                        <table id="itemPlaceholderContainer" runat="server" class="table table-hover table-striped">
                             <tr runat="server">
                                 <th runat="server">INSTRUCTOR_ID</th>
                                 <th runat="server">FNAME</th>

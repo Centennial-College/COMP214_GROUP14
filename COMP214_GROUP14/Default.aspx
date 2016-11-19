@@ -2,9 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron small">
+    <div class="jumbotron">
         <h1>Small College</h1>
-        <div class="container small">
+        <div class="container">
             This is a small college management system developed by ASP.NET and Oracle.<br />
  <%--             This project involves six tables
            <dl>

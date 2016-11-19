@@ -41,7 +41,7 @@
                     <div class="col-md-3"></div>
                     <div class="col_md-9">
                         <button id="btnAdd"
-                            data-toggle="tooltip" data-placement="bottom"
+                            data-toggle="tooltip" data-placement="left"
                             title="This command button will insert student record to students table." 
                         class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">&nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                         <button id="btnCancel" type="reset" class="btn btn-default" runat="server" causesvalidation="False">&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
@@ -86,7 +86,7 @@
                 </ItemTemplate>
                 <LayoutTemplate>
 
-                    <table id="itemPlaceholderContainer" runat="server" class="table">
+                    <table id="itemPlaceholderContainer" runat="server" class="table  table-hover table-striped">
                         <tr runat="server">
 
                             <th runat="server">STUDENT_ID</th>
