@@ -13,8 +13,7 @@ Course Code: COMP214
 Term: Fall 2016</li></ul><p>
 You will work in groups of maximum 4 people. Tasks will include:</p>
 <ul>
-<li>
-</li>
+
 <li>
 Interface Design</li>
 <li>
