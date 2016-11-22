@@ -19,5 +19,5 @@ Interface Design</li>
 application logic and programming</li>
 <li>
 database design and implementation, data creation</li>
-<li>
+
 <ul>
