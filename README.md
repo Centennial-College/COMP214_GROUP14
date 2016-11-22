@@ -10,10 +10,11 @@ Course Name: Advance Database Concepts
 Course Code: COMP214
 </li>
 <li>
-Term: Fall 2016</li></ul>
+Term: Fall 2016</li></ul><p>
+You will work in groups of maximum 4 people. Tasks will include:</p>
 <ul>
 <li>
-You will work in groups of maximum 4 people. Tasks will include:</li>
+</li>
 <li>
 Interface Design</li>
 <li>
