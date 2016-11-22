@@ -1,11 +1,23 @@
-# COMP214_GROUP14
-You can visit the website:
-http://comp214-group14.azurewebsites.net/
-This is a team project for course COMP214
+# COMP214_GROUP14 <br />
+You can visit the website: <br />
+http://comp214-group14.azurewebsites.net/ <br />
+This is a team project for course COMP214 <br />
+<ul>
+<li>
 Course Name: Advance Database Concepts
+</li>
+<li>
 Course Code: COMP214
-Term: Fall 2016
-You will work in groups of maximum 4 people. Tasks will include:
-Interface Design
-application logic and programming
-database design and implementation, data creation
+</li>
+<li>
+Term: Fall 2016</li>
+<li>
+You will work in groups of maximum 4 people. Tasks will include:</li>
+<li>
+Interface Design</li>
+<li>
+application logic and programming</li>
+<li>
+database design and implementation, data creation</li>
+<li>
+<ul>
