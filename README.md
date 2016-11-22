@@ -1,6 +1,8 @@
-# COMP214_GROUP14 <br />
+# COMP214_GROUP14
+<p>
 You can visit the website: <br />
 http://comp214-group14.azurewebsites.net/ <br />
+</p>
 This is a team project for course COMP214 <br />
 <ul>
 <li>
