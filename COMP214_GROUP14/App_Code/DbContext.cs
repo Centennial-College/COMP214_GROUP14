@@ -7,11 +7,54 @@ using System.Configuration;
 
 namespace COMP214_GROUP14.App_Code
 {
-    
+
     public class DbContext
     {
 
-       public OracleConnection conn;
+        public OracleConnection conn;
+
+        private OracleTransaction trans;
+
+        private List<OracleCommand> cmdList;
+
+
+        public void AddCommand(OracleCommand cmd)
+        {
+            cmd.Connection = conn;
+            cmd.Transaction = trans;
+            cmdList.Add(cmd);
+        }
+
+        public void BeginTransaction()
+        {
+            trans = conn.BeginTransaction();
+            cmdList = new List<OracleCommand>();
+        }
+
+        public void Commit()
+        {
+            try
+            {
+                foreach (OracleCommand cmd in cmdList)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                trans.Commit();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    trans.Rollback();
+                }
+                catch (Exception ex1)
+                {
+                    throw ex1;
+                }
+                throw ex;
+            }
+        }
 
         public DbContext()
         {
@@ -37,6 +80,6 @@ namespace COMP214_GROUP14.App_Code
             return cmd.ExecuteReader();
         }
 
-        
+
     }
 }

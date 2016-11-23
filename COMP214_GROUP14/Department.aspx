@@ -46,5 +46,8 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;DEPT_ID&quot;, &quot;NAME&quot; FROM &quot;SC_DEPARTMENTS&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT DEPT_ID, NAME FROM SC_DEPARTMENTS ORDER BY DEPT_ID"></asp:SqlDataSource>
 </asp:Content>

@@ -33,16 +33,18 @@
                                 <asp:Label ID="LNAMELabel" runat="server" Text='<%# Eval("LNAME") %>' />
                             </td>
                             <td>
+                                <asp:Label ID="NumberOfCoursesLabel" runat="server" Text='<%# Eval("NumberOfCourses") %>' />
+                            </td>
+                            <td>
                                 <asp:Button ID="DeleteItemButton"
                                     runat="server"
                                     CssClass="btn btn-primary"
                                     CommandName="DeleteItem"
                                     CommandArgument='<%# Eval("INSTRUCTOR_ID") %>'
                                     Text="Delete"
-                                    OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');" 
+                                    OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');"
                                     data-toggle="tooltip" data-placement="right"
-                                    title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL course which was FK with instructor."
-                                    />
+                                    title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL from courseinstructor and courseenrollments which are the FK with the instructor." />
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -53,6 +55,7 @@
                                 <th runat="server">INSTRUCTOR_ID</th>
                                 <th runat="server">FNAME</th>
                                 <th runat="server">LNAME</th>
+                                <th runat="server">NUMBER OF COURSES</th>
                                 <th runat="server"></th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
@@ -64,8 +67,11 @@
                 </asp:ListView>
 
             </div>
+        </div>
     </div>
-    </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;INSTRUCTOR_ID&quot;, &quot;FNAME&quot;, &quot;LNAME&quot; FROM &quot;SC_INSTRUCTORS&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+        ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
+        SelectCommand="SELECT INSTRUCTOR_ID, FNAME, LNAME, NumberOfCourses FROM vw_instructor ORDER BY INSTRUCTOR_ID"></asp:SqlDataSource>
 
 </asp:Content>

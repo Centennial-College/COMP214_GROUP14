@@ -95,7 +95,7 @@
 
         </div>
         <footer class="text-center">
-            <p>&copy; <%: DateTime.Now.Year %> - COMP214-001-GROUP14 for 2016 Full Semester</p>
+            <p>&copy; <%: DateTime.Now.Year %> - COMP214-001-GROUP14 for 2016 Fall Semester</p>
         </footer>
     </form>
     <script src="Scripts/AlterAutoHidden.js"></script>

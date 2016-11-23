@@ -83,6 +83,9 @@
                     <ItemTemplate>
                         <tr style="">
                             <td>
+                                <asp:Label ID="IDLabel" runat="server" Text='<%# Eval("course_id") %>' />
+                            </td>
+                            <td>
                                 <asp:Label ID="TITLELabel" runat="server" Text='<%# Eval("TITLE") %>' />
                             </td>
                             <td>
@@ -92,12 +95,18 @@
                                 <asp:Label ID="DEPTNAMELabel" runat="server" Text='<%# Eval("DEPTNAME") %>' />
                             </td>
                             <td>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("InstructorName") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("NumberOfStudents") %>' />
+                            </td>
+                            <td>
                                 <asp:Button ID="CompletedItemButton"
                                     runat="server"
-                                    CssClass="btn btn-primary"
+                                    CssClass="btn btn-info"
                                     CommandName="DeleteItem"
                                     CommandArgument='<%# Eval("COURSE_ID") %>'
-                                    Text="Complete"
+                                    Text="Set to Complete"
                                     OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');"
                                     data-toggle="tooltip" data-placement="right"
                                     title="This command button will set the field COMPLETED='Y'. Then Triggers will add credit to the students who enrolled this course" />
@@ -109,9 +118,12 @@
 
                         <table id="itemPlaceholderContainer" runat="server" class="table table-hover table-striped">
                             <tr runat="server" style="">
+                                <th runat="server">COURSE_ID</th>
                                 <th runat="server">TITLE</th>
                                 <th runat="server">CREDITS</th>
                                 <th runat="server">DEPTNAME</th>
+                                <th runat="server">INSTRUCTOR NAME</th>
+                                <th runat="server">NUMBER OF STUDENTS</th>
                                 <th runat="server"></th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
@@ -125,7 +137,10 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT c.course_id course_id, c.title title, c.credits credits, d.name DeptName FROM sc_courses c inner join sc_departments d using (dept_id) where c.completed='N'"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+        ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
+        SelectCommand="SELECT course_id, title, credits, dept_name DeptName, InstructorName, NumberOfStudents FROM vw_course where completed='N' ORDER BY course_id"></asp:SqlDataSource>
 
 
 </asp:Content>

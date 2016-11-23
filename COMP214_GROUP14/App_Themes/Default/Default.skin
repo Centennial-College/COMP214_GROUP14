@@ -18,4 +18,3 @@ Default skin template. The following skins are provided as examples only.
 <asp:CustomValidator ForeColor="red" runat="server"></asp:CustomValidator>
 <asp:TextBox runat="server" CssClass="form-control"></asp:TextBox>
 <asp:DropDownList  CssClass="form-control" runat="server"></asp:DropDownList>
-<asp:Button runat="server" CssClass="btn btn-default btn-sm" />
