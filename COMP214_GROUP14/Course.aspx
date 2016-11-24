@@ -42,7 +42,16 @@
                     </div>
 
                 </div>
+               <div class="form-group">
 
+                    <div class="col-md-3">
+                        <label for="ddlInstructor" class="control-label">Instructor:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <asp:DropDownList ID="ddlInstructor" runat="server"></asp:DropDownList>
+                    </div>
+
+                </div>
                 <div class="form-group">
 
                     <div class="col-md-3">
@@ -101,15 +110,19 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("NumberOfStudents") %>' />
                             </td>
                             <td>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("completed") %>' />
+                            </td>
+                            <td>
                                 <asp:Button ID="CompletedItemButton"
+                                    enabled='<%# Eval("completed").ToString()=="N" %>'
                                     runat="server"
                                     CssClass="btn btn-info"
-                                    CommandName="DeleteItem"
+                                    CommandName="CompletedItem"
                                     CommandArgument='<%# Eval("COURSE_ID") %>'
-                                    Text="Set to Complete"
-                                    OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');"
+                                    Text="Set to Complete" causesvalidation="False"
+                                    OnClientClick="return confirm('Are you absolutely sure you want to complete this course and update the credits of the students who are enrolling this courses?');"
                                     data-toggle="tooltip" data-placement="right"
-                                    title="This command button will set the field COMPLETED='Y'. Then Triggers will add credit to the students who enrolled this course" />
+                                    title="This command button will set the field COMPLETED='Y'. Then the trigger COPLETE_COURSEE_TRG will be fired to add credit to the students who enrolled this course" />
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -124,6 +137,7 @@
                                 <th runat="server">DEPTNAME</th>
                                 <th runat="server">INSTRUCTOR NAME</th>
                                 <th runat="server">NUMBER OF STUDENTS</th>
+                                <th runat="server">COMPLETED</th>
                                 <th runat="server"></th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
@@ -140,7 +154,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT course_id, title, credits, dept_name DeptName, InstructorName, NumberOfStudents FROM vw_course where completed='N' ORDER BY course_id"></asp:SqlDataSource>
+        SelectCommand="SELECT course_id, title, credits, dept_name DeptName, InstructorName, NumberOfStudents,completed FROM vw_course ORDER BY course_id"></asp:SqlDataSource>
 
 
 </asp:Content>

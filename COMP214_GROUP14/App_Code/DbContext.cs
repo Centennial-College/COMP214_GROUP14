@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Oracle.ManagedDataAccess.Client;
 using System.Configuration;
+using System.Data;
 
 namespace COMP214_GROUP14.App_Code
 {
@@ -72,6 +73,14 @@ namespace COMP214_GROUP14.App_Code
         {
             cmd.Connection = conn;
             return cmd.ExecuteScalar();
+        }
+        public DataTable ExecuteDataTable(OracleCommand cmd)
+        {
+            cmd.Connection = conn;
+            DataTable dt = new DataTable();
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
 
         public OracleDataReader ExecuteReader(OracleCommand cmd)

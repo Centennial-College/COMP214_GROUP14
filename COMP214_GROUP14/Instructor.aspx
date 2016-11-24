@@ -9,10 +9,46 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3><span class="glyphicon glyphicon-user"></span>&nbsp;Instuctor</h3>
+                <h3><span class="glyphicon glyphicon-user"></span>&nbsp;Add Instuctor</h3>
             </div>
             <div class="panel-body">
+                              <div class="row">
+                    <div class="form-inline">
+                        <div class="col-md-3">
+                            <label for="txtfName">First Name:</label>
+                        </div>
+                        <div class="col-md-4">
+                            <asp:TextBox ID="txtfName" runat="server" MaxLength="50"></asp:TextBox>
+                            <br />
+                            <asp:RequiredFieldValidator ID="rvtxtfName" runat="server" ControlToValidate="txtfName" ErrorMessage="First Name is mandatory."></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-inline">
+                        <div class="col-md-3">
+                            <label for="txtlName">Last Name:</label>
+                        </div>
+                        <div class="col-md-4">
+                            <asp:TextBox ID="txtlName" runat="server" MaxLength="50"></asp:TextBox>
+                            <br />
+                            <asp:RequiredFieldValidator ID="rvtxtCredit" runat="server" ControlToValidate="txtlName" ErrorMessage="Last Name is mandatory."></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row form-inline">
+                    <div class="col-md-3"></div>
+                    <div class="col_md-9">
+                        <button id="btnAdd"
+                            data-toggle="tooltip" data-placement="left"
+                            title="This command button will insert a instructor record to instructors table."
+                            class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">
+                            &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+                        <button id="btnCancel" type="reset" class="btn btn-default" runat="server" causesvalidation="False">&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
+                    </div>
+                    <br />
+                </div>
                 <asp:ListView ID="ListView1" runat="server" DataKeyNames="INSTRUCTOR_ID" DataSourceID="SqlDataSource1" OnItemCommand="ListView1_ItemCommand">
                     <EmptyDataTemplate>
                         <table runat="server" class="table">
@@ -44,7 +80,7 @@
                                     Text="Delete"
                                     OnClientClick="return confirm('Are you absolutely sure you want to delete this instructor and his courses?');"
                                     data-toggle="tooltip" data-placement="right"
-                                    title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL from courseinstructor and courseenrollments which are the FK with the instructor." />
+                                    title="This command button will invoke DELETE_INSTRUCTOR_SP procedure. DELETE ALL from courseinstructor which are the FK with the instructor." />
                             </td>
                         </tr>
                     </ItemTemplate>

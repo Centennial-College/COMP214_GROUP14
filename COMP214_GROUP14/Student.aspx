@@ -42,7 +42,7 @@
                     <div class="col_md-9">
                         <button id="btnAdd"
                             data-toggle="tooltip" data-placement="left"
-                            title="This command button will insert student record to students table."
+                            title="This command button will call INSERT_STUDENT_SP Procedure to insert a student record to students table and return a output parameter new student id."
                             class="btn btn-primary" runat="server" onserverclick="btnAdd_ServerClick">
                             &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                         <button id="btnCancel" type="reset" class="btn btn-default" runat="server" causesvalidation="False">&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</button>
@@ -71,7 +71,13 @@
                             <td>
                                 <asp:Label ID="LNAMELabel" runat="server" Text='<%# Eval("LNAME") %>' />
                             </td>
+                             <td>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("CoursesTotal") %>' />
+                            </td>
                             <td>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("CoursesCompletd") %>' />
+                            </td>
+                           <td>
                                 <asp:Label ID="COMPLETED_CREDITSLabel" runat="server" Text='<%# Eval("COMPLETED_CREDITS") %>' />
                             </td>
                             <td>
@@ -81,13 +87,17 @@
                                     CommandName="DeleteItem"
                                     CommandArgument='<%# Eval("STUDENT_ID") %>'
                                     Text="Delete"
+                                    data-toggle="tooltip" data-placement="left"
+                                    title="This command button will DELETE a Student record. Before deleting, it will fire the TRIGGER DELETE_STUDENT_TRG to delete records from courseenrollments."
                                     OnClientClick="return confirm('Are you absolutely sure you want to delete this student?');" CausesValidation="False" />
                             </td>
                             <td>
                                 <asp:Button ID="SelecteItem"
                                     runat="server"
                                     CssClass="btn btn-info"
-                                    CommandName="SelecteItem"
+                                     data-toggle="tooltip" data-placement="right"
+                                    title="This command button will show all courses the student enrolled or not enrolled."
+                                   CommandName="SelecteItem"
                                     CommandArgument='<%# Eval("STUDENT_ID") %>'
                                     Text="Select Courses" CausesValidation="False" />
                             </td>
@@ -101,6 +111,8 @@
                                 <th runat="server">STUDENT_ID</th>
                                 <th runat="server">FNAME</th>
                                 <th runat="server">LNAME</th>
+                                <th runat="server">COURSE Total</th>
+                                <th runat="server">COURSE COMPLETED</th>
                                 <th runat="server">COMPLETED CREDITS</th>
                                 <th runat="server"></th>
                                 <th runat="server"></th>
@@ -125,7 +137,7 @@
                     </div>
                     <button id="btnSave"
                         data-toggle="tooltip" data-placement="left"
-                        title="This command button will insert student_id and course_id to courseenrollments table."
+                        title="This command button will call a procedure COURSE_ENROLL_SP to insert student_id and course_id to courseenrollments table."
                         class="btn btn-primary" runat="server" onserverclick="btnSave_ServerClick" causesvalidation="False">
                         &nbsp;&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                 </div>
@@ -136,6 +148,6 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT STUDENT_ID, FNAME, LNAME, COMPLETED_CREDITS FROM SC_STUDENTS ORDER BY STUDENT_ID"></asp:SqlDataSource>
+        SelectCommand="SELECT STUDENT_ID, FNAME, LNAME, COMPLETED_CREDITS, CoursesTotal,CoursesCompletd,CoursesNoCompletd FROM vw_STUDENT ORDER BY STUDENT_ID"></asp:SqlDataSource>
 
 </asp:Content>

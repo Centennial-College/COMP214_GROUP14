@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Oracle.ManagedDataAccess.Client;
 using COMP214_GROUP14.App_Code;
+using System.Data;
 
 namespace COMP214_GROUP14
 {
@@ -19,17 +20,20 @@ namespace COMP214_GROUP14
         protected void btnAdd_ServerClick(object sender, EventArgs e)
         {
             DbContext db = new DbContext();
-            OracleCommand cmd = new OracleCommand("INSERT INTO sc_students values (sc_student_id_seq.nextval,:v_fname,:v_lname,0)");
+            OracleCommand cmd = new OracleCommand("insert_student_sp");
+            cmd.CommandType = CommandType.StoredProcedure;
 
             OracleParameter para1 = new OracleParameter("v_fname ", txtfName.Text);
             OracleParameter para2 = new OracleParameter("v_lname", txtlName.Text);
+            OracleParameter para3= new OracleParameter("v_studentid",OracleDbType.Int32,ParameterDirection.Output);
             cmd.Parameters.Add(para1);
             cmd.Parameters.Add(para2);
+            cmd.Parameters.Add(para3);
             db.ExecuteNonQuery(cmd);
             ListView1.DataBind();
             divMessage.Attributes.Remove("class");
             divMessage.Attributes.Add("class", "alert alert-success");
-            divMessage.InnerText = "Student was saved successfully.";
+            divMessage.InnerText = "Student was inserted successfully. New student id is " + para3.Value.ToString();
         }
 
 
@@ -48,7 +52,7 @@ namespace COMP214_GROUP14
                 ListView1.DataBind();
                 divMessage.Attributes.Remove("class");
                 divMessage.Attributes.Add("class", "alert alert-success");
-                divMessage.InnerText = "Student was delete successfully.";
+                divMessage.InnerText = "Student was deleted successfully.";
                 return;
             }
             if (e.CommandName == "SelecteItem")
@@ -57,7 +61,7 @@ namespace COMP214_GROUP14
                 divStuentID.InnerText = e.CommandArgument.ToString();
 
                 DbContext db = new DbContext();
-                OracleCommand cmd = new OracleCommand("SELECT * FROM vw_courseEnroll where student_id=:v_studentid");
+                OracleCommand cmd = new OracleCommand("SELECT * FROM vw_courseEnroll where student_id=:v_studentid ORDER BY COMPLETED");
 
                 OracleParameter para1 = new OracleParameter("v_studentid ", Convert.ToInt32(e.CommandArgument));
                 cmd.Parameters.Add(para1);
@@ -67,6 +71,7 @@ namespace COMP214_GROUP14
                 {
                     ListItem item = new ListItem(reader["title"].ToString(), reader["course_id"].ToString());
                     item.Selected = ((reader["IsEnrolled"].ToString()) == "1");
+                    item.Enabled = (reader["completed"].ToString()) == "N";
                     cblCourses.Items.Add(item);
                 }
 
@@ -94,7 +99,12 @@ namespace COMP214_GROUP14
                     OracleParameter para1 = new OracleParameter("v_course_id ", item.Value);
                     cmd2.Parameters.Add(para1);
                     OracleParameter para2 = new OracleParameter("v_student_id ", studentid);
+
                     cmd2.Parameters.Add(para2);
+                    //OracleParameter para3 = new OracleParameter("v_selected ", item.Selected? 1 :0);
+
+                    //cmd2.Parameters.Add(para3);
+
                     db.AddCommand(cmd2);
                 }
             }

@@ -223,6 +223,10 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="SQLScript\2. Functions.sql" />
+    <Content Include="SQLScript\3. Procedures.sql" />
+    <Content Include="SQLScript\4. Triggers.sql" />
+    <Content Include="SQLScript\5. CreateView.sql" />
     <Content Include="WebControls\ucDepartment.ascx" />
     <Content Include="App_Themes\Default\Default.skin" />
     <None Include="Properties\PublishProfiles\COMP214-GROUP14 - Web Deploy.pubxml" />
@@ -243,7 +247,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
-    <Content Include="SQLScript\CreateTables.sql" />
+    <Content Include="SQLScript\1. CreateTables.sql" />
     <Content Include="Student.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

@@ -67,6 +67,15 @@ namespace COMP214_GROUP14 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rvtxtCredit;
         
         /// <summary>
+        /// ddlInstructor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInstructor;
+        
+        /// <summary>
         /// ucDepartment1 control.
         /// </summary>
         /// <remarks>

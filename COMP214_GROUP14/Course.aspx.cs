@@ -14,9 +14,22 @@ namespace COMP214_GROUP14
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                BindInstructor();
+            }
         }
 
+        private void BindInstructor()
+        {
+            DbContext db = new DbContext();
+            OracleCommand cmd = new OracleCommand("select instructor_id, fname || ' ' || lname name from sc_instructors order by fname");
+            DataTable dt = db.ExecuteDataTable(cmd);
+            ddlInstructor.DataSource = dt;
+            ddlInstructor.DataTextField = "name";
+            ddlInstructor.DataValueField = "instructor_id";
+            ddlInstructor.DataBind();
+        }
         protected void btnAdd_ServerClick(object sender, EventArgs e)
         {
             DbContext db = new DbContext();
@@ -26,7 +39,11 @@ namespace COMP214_GROUP14
             OracleParameter para1 = new OracleParameter("v_title", txtTitle.Text);
             OracleParameter para2 = new OracleParameter("v_credit", txtCredit.Text);
             OracleParameter para3 = new OracleParameter("v_deptname", ucDepartment1.Value);
+            OracleParameter para4 = new OracleParameter("v_instructorid", ddlInstructor.SelectedValue);
             cmd.Parameters.Add(para1);
+            cmd.Parameters.Add(para2);
+            cmd.Parameters.Add(para3);
+            cmd.Parameters.Add(para4);
             db.ExecuteNonQuery(cmd);
             txtCredit.Text = string.Empty;
             txtTitle.Text = string.Empty;
@@ -44,14 +61,14 @@ namespace COMP214_GROUP14
 
         protected void ListView1_ItemCommand(object sender, System.Web.UI.WebControls.ListViewCommandEventArgs e)
         {
-            if (e.CommandName == "CompletedItemButton")
+            if (e.CommandName == "CompletedItem")
             {
                 DbContext db = new DbContext();
                 OracleCommand cmd = new OracleCommand("UPDATE sc_courses set completed='Y' where course_id=:v_courseid");
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 OracleParameter para1 = new OracleParameter("v_courseid ", Convert.ToInt32(e.CommandArgument));
                 cmd.Parameters.Add(para1);
+                db.ExecuteNonQuery(cmd);
 
                 ListView1.DataBind();
                 divMessage.Attributes.Remove("class");
