@@ -25,3 +25,18 @@ BEGIN
 
     END LOOP;
 END;
+
+--Trigger for delete student:
+--DELETE_STUDENT_TRG
+-- 
+--Before deleting a student record
+--Delete this student records in sc_courseenrollments table
+
+CREATE OR REPLACE TRIGGER delete_student_trg BEFORE
+    DELETE ON sc_students
+    FOR EACH ROW
+BEGIN
+    DELETE FROM sc_courseenrollments WHERE
+        student_id =:old.student_id;
+
+END;

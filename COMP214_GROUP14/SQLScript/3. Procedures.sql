@@ -73,3 +73,57 @@ BEGIN
       sc_course_id_seq.currval,
       v_instructorid);
 END;
+
+
+-- Procedure for updating sc_courseenrollments table
+--Paramenters:
+--V_student_id in number
+--V_course_id in number
+--V_selected in number
+--NO RETURN VALUE
+--If v_selected=1 then
+--                If find record in sc_courseenrollments
+--                Then do nothing
+--                Else
+--                    Insert a new record
+--                End if
+--Else
+--                If find record in sc_courseenrollments
+--                Then delelte this record
+--                Else
+--                                Do nothing
+--                End if
+--End if
+CREATE OR REPLACE PROCEDURE update_courseenrollments_sp (
+    v_student_id   IN NUMBER,
+    v_course_id    IN NUMBER,
+    v_selected     IN NUMBER
+) AS
+    lv_matching_records_found   NUMBER;
+BEGIN
+    SELECT
+        COUNT(*)
+    INTO
+        lv_matching_records_found
+    FROM
+        sc_courseenrollments
+    WHERE
+        course_id = v_course_id
+    AND
+        student_id = v_student_id;
+  
+
+    IF v_selected = 1 AND lv_matching_records_found = 0 THEN
+        INSERT INTO sc_courseenrollments VALUES ( v_course_id,v_student_id );
+
+    ELSE
+        IF lv_matching_records_found = 1 THEN
+            DELETE FROM sc_courseenrollments WHERE
+                course_id = v_course_id
+            AND
+                student_id = v_student_id;
+
+        END IF;
+    END IF;
+
+END;

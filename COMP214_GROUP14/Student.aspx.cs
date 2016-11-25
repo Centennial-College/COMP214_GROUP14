@@ -25,7 +25,7 @@ namespace COMP214_GROUP14
 
             OracleParameter para1 = new OracleParameter("v_fname ", txtfName.Text);
             OracleParameter para2 = new OracleParameter("v_lname", txtlName.Text);
-            OracleParameter para3= new OracleParameter("v_studentid",OracleDbType.Int32,ParameterDirection.Output);
+            OracleParameter para3 = new OracleParameter("v_studentid", OracleDbType.Int32, ParameterDirection.Output);
             cmd.Parameters.Add(para1);
             cmd.Parameters.Add(para2);
             cmd.Parameters.Add(para3);
@@ -86,29 +86,31 @@ namespace COMP214_GROUP14
             DbContext db = new DbContext();
 
             db.BeginTransaction();
-            OracleCommand cmd = new OracleCommand("DELETE FROM sc_courseenrollments WHERE student_id= :v_student_id");
-            OracleParameter para = new OracleParameter("v_student_id ", studentid);
-            cmd.Parameters.Add(para);
-            db.AddCommand(cmd);
+            //OracleCommand cmd = new OracleCommand("DELETE FROM sc_courseenrollments WHERE student_id= :v_student_id");
+            //OracleParameter para = new OracleParameter("v_student_id ", studentid);
+            //cmd.Parameters.Add(para);
+            //db.AddCommand(cmd);
 
             foreach (ListItem item in cblCourses.Items)
             {
-                if (item.Selected)
-                {
-                    OracleCommand cmd2 = new OracleCommand("INSERT INTO sc_courseenrollments values (:v_course_id,:v_student_id)");
-                    OracleParameter para1 = new OracleParameter("v_course_id ", item.Value);
-                    cmd2.Parameters.Add(para1);
-                    OracleParameter para2 = new OracleParameter("v_student_id ", studentid);
 
-                    cmd2.Parameters.Add(para2);
-                    //OracleParameter para3 = new OracleParameter("v_selected ", item.Selected? 1 :0);
+                OracleCommand cmd2 = new OracleCommand("update_courseenrollments_sp");
+                cmd2.CommandType = CommandType.StoredProcedure;
 
-                    //cmd2.Parameters.Add(para3);
+                OracleParameter para1 = new OracleParameter("v_student_id", studentid);
+                cmd2.Parameters.Add(para1);
+                OracleParameter para2 = new OracleParameter("v_course_id", item.Value);
 
-                    db.AddCommand(cmd2);
-                }
+                cmd2.Parameters.Add(para2);
+                OracleParameter para3 = new OracleParameter("v_selected", item.Selected ? 1 : 0);
+
+                cmd2.Parameters.Add(para3);
+
+                db.AddCommand(cmd2);
+
             }
             db.Commit();
+            ListView1.DataBind();
             divMessage.Attributes.Remove("class");
             divMessage.Attributes.Add("class", "alert alert-success");
             divMessage.InnerText = "Courses for the student were saved successfully.";
