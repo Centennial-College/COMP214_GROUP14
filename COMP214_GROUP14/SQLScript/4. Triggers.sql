@@ -1,7 +1,9 @@
-﻿
+
 --TRIGGERS ======================================================================================
---click button > update course set status to 'Y' . after update, 
---update students complete creditscreate or replace trigger complete_course_trg
+
+--Trigger to set final credit for student for a perticular course:
+--This Trigger is called when the user sets course completion to "Y".
+--It will update student course credit after setting course completion to "Y".
 CREATE OR REPLACE TRIGGER complete_course_trg AFTER
     UPDATE OF completed ON sc_courses
     FOR EACH ROW
@@ -27,10 +29,8 @@ BEGIN
 END;
 
 --Trigger for delete student:
---DELETE_STUDENT_TRG
--- 
---Before deleting a student record
---Delete this student records in sc_courseenrollments table
+-- This trigger will call the delete command to remove enrollment of student to a course.
+-- After course is removed from student record it will delete the student 
 
 CREATE OR REPLACE TRIGGER delete_student_trg BEFORE
     DELETE ON sc_students
