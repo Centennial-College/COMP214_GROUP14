@@ -1,8 +1,8 @@
-﻿
+
   --VIEWS =====================================================================================
 
-
- --Create a view display course details include how many students enrolled in a course,and the department name of the course
+ -- This view will display course information in a Table
+ -- Example :: Course Title || Department Name || Credits || Completed || Instructor Name
 
 CREATE OR REPLACE VIEW vw_course AS
     SELECT
@@ -36,7 +36,8 @@ CREATE OR REPLACE VIEW vw_course AS
         ci.instructor_id = i.instructor_id;
  
    
---Show all courses and weather the students is enrolling the courses  
+ -- This view will display Course Enrollmemnt information in a Table form
+ -- Example :: Course Title || Completed 
 
 CREATE OR REPLACE VIEW vw_courseenroll AS
     SELECT
@@ -50,7 +51,8 @@ CREATE OR REPLACE VIEW vw_courseenroll AS
         sc_students s;
 
 
---Create a view display instructors details include how many courses does the instructor have
+ -- This view will display instructor information in a Table form
+ -- Example :: Instructor First Name || Instructor Last Name
 
 CREATE OR REPLACE VIEW vw_instructor AS
     SELECT
@@ -68,6 +70,9 @@ CREATE OR REPLACE VIEW vw_instructor AS
     FROM
         sc_instructors i;
         
+ -- This view will display Student information in a Table form
+ -- Example :: Student First Name || Student Last Name || Completed Credits
+
 CREATE OR REPLACE VIEW vw_student
 AS   
        SELECT 
